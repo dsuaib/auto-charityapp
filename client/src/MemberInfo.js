@@ -2,11 +2,11 @@ import React from "react"
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
-function MemberLayout() {
+function MemberInfo() {
     const [members, setMembers]=useState([]);
 
     useEffect(() => {
-           axios.get('https://at715casestudy.herokuapp.com/app/members')
+           axios.get('https://at715casestudy.herokuapp.com/app/login')
            .then (res => {
                console.log(res)
                setMembers(res.data)
@@ -25,4 +25,4 @@ function MemberLayout() {
     )
 }
 
-export default MemberLayout;
+export default MemberInfo;

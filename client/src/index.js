@@ -1,11 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import App from './App';
+import MemberLayout from "./MemberLayout"
+import Donate from "./Donate"
+import RegisterMember from "./RegisterMember"
+import Login from "./Login"
+import CreateAnnouncement from "./CreateAnnoucement"
+import Pricing from "./Donate2"
+import MemberInfo from "./MemberInfo"
 import reportWebVitals from './reportWebVitals';
 
+
 ReactDOM.render(
-    <App />,
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={App}/>
+      <Route exact path="/pricing" component={Pricing}/>
+      <Route exact path="/memberlayout" component={MemberLayout}/>
+      <Route exact path="/donate" component={Donate}/>
+      <Route exact path="/register" component={RegisterMember}/>
+      <Route exact path="/login" component={Login}/>
+      <Route exact path="/announcement" component={CreateAnnouncement}/>
+    </Switch>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
