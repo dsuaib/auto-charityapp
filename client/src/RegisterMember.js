@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {TextField, Button, Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container } from '@material-ui/core'; 
 import  HomeIcon  from '@material-ui/icons/Home';
+import {useHistory} from 'react-router-dom';
 
 
 
@@ -38,6 +39,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const RegisterMember = ({ handleClose }) => {
+
+  let history = useHistory();
   const classes = useStyles();
   // create state variables for each input
   const [firstName, setFirstName] = useState('');
@@ -46,8 +49,7 @@ const RegisterMember = ({ handleClose }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
-  
-  
+
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -62,9 +64,11 @@ const RegisterMember = ({ handleClose }) => {
     }
 
     axios.post('https://at715casestudy.herokuapp.com/app/registermember', registered)
-        .then(response => console.log(response.data))
-
-    console.log(firstName, lastName, email, username, password, age);
+        .then((response) => {
+          console.log(response.data)
+          history.push('/confirmation')
+        } )
+        
   };
 
   return (
@@ -136,7 +140,7 @@ const RegisterMember = ({ handleClose }) => {
         </Button>
       </Link>
         <Button type="submit" variant="contained" color="primary">
-          Signup
+          Sign up
         </Button>
       </div>
     </form>

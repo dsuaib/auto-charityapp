@@ -5,6 +5,7 @@ import  HomeIcon  from '@material-ui/icons/Home';
 import { makeStyles } from '@material-ui/core/styles';
 import StarIcon from '@material-ui/icons/StarBorder';
 import CardHeader from '@material-ui/core/CardHeader';
+import Box from '@material-ui/core/Box';
 
 
 
@@ -21,18 +22,35 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '10px',
     justifyContent: "flex-end"
   },
+  body: {
+    marginTop: theme.spacing(3)
+  },
   createAccountButton: {
     marginRight: '50px',
+  },
+  announcements: {
+    marginTop: theme.spacing(3)
   },
   cardHeader: {
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
+      marginTop: theme.spacing(2)
   },
   cardPricing: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'baseline',
     marginBottom: theme.spacing(2),
+  },
+  footer: {
+    borderTop: `1px solid ${theme.palette.divider}`,
+    marginTop: theme.spacing(8),
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(3),
+    [theme.breakpoints.up('sm')]: {
+      paddingTop: theme.spacing(6),
+      paddingBottom: theme.spacing(6),
+    },
   },
 }));
 
@@ -68,6 +86,21 @@ const tiers = [
   
 ];
 
+const footers = [
+  {
+    title: 'Company',
+    description: ['Team', 'History', <Link to ='/contactus' style={{ textDecoration: 'none', color: 'inherit' }}>Contact us</Link>, 'Locations'],
+  },
+  {
+    title: 'Resources',
+    description: ['Vaccination Sites', 'Travel Restrictions', 'Mask Providers', 'COVID-19 Relief'],
+  },
+  {
+    title: 'Legal',
+    description: ['Privacy policy', 'Terms of use'],
+  },
+];
+
 function App() {
   const classes = useStyles();
 
@@ -76,13 +109,13 @@ function App() {
         <>
         <div className={classes.root}>
           <CssBaseline/>
-          <AppBar position ="relative">
+          <AppBar mb={2} position ="relative">
             <Toolbar>
               <Link to='/' style={{  color: '#FFF'  }}> 
                 <HomeIcon className={classes.menuButton}/> 
               </Link>
               <Link to='/' style={{ textDecoration: 'none', color: '#FFF' }}>  
-                <Typography>
+                <Typography variant="h6"  noWrap>
                   Home
                 </Typography> 
               </Link>
@@ -101,8 +134,8 @@ function App() {
           </AppBar>
         </div>
         <div>
-          <Container maxWidth="sm">
-            <Typography align="center" variant="h2" gutterBottom>
+          <Container className={classes.body}  maxWidth="sm">
+            <Typography  align="center" variant="h2" gutterBottom>
               COVID-19 Charity
             </Typography>
           </Container>
@@ -116,7 +149,7 @@ function App() {
               <Grid container justify="center">
                 <Grid item>
                   <Link to='/pricing' style={{ textDecoration: 'none'}}> 
-                    <Button variant="contained" color="primary">Donate</Button>
+                    <Button size='large' variant="contained" color="primary">Donate</Button>
                   </Link>
                 </Grid>
               </Grid>
@@ -125,7 +158,7 @@ function App() {
           </Container>
         </div>
         <div>
-        <Container maxWidth="md" component="main">
+        <Container className={classes.announcements} maxWidth="md" component="main">
         <Grid container spacing={5} alignItems="flex-end">
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
@@ -141,7 +174,7 @@ function App() {
                 />
                 <CardContent>
                   <div className={classes.cardPricing}>
-                    <Typography component="h2" variant="h7" color="textPrimary">
+                    <Typography component="h2" variant="h6" color="textPrimary">
                       {tier.price}
                     </Typography>
                     <Typography variant="h6" color="textSecondary">
@@ -169,7 +202,30 @@ function App() {
         </div>
         </>
         <Link to='/memberlayout'><button>See Members</button></Link>
-        <Link to='/donate'><button>Create Account</button></Link>
+     {/* Footer */}
+      <Container maxWidth="md" component="footer" className={classes.footer}>
+        <Grid container spacing={4} justify="space-evenly">
+          {footers.map((footer) => (
+            <Grid item xs={6} sm={3} key={footer.title}>
+              <Typography variant="h6" color="textPrimary" gutterBottom>
+                {footer.title}
+              </Typography>
+              <ul>
+                {footer.description.map((item) => (
+                  <li key={item}>
+                    <Typography href="#" variant="subtitle1" color="textSecondary">
+                      {item}
+                    </Typography>
+                  </li>
+                ))}
+              </ul>
+            </Grid>
+          ))}
+        </Grid>
+        <Box mt={5}>
+        </Box>
+      </Container>
+      {/* End footer */}
       </div>
     );
 

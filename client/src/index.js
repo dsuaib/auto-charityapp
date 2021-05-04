@@ -10,6 +10,8 @@ import Login from "./Login"
 import CreateAnnouncement from "./CreateAnnoucement"
 import Pricing from "./Donate2"
 import MemberInfo from "./MemberInfo"
+import Confirmation from "./Confirmation"
+import ContactUs from './ContactUs'
 import reportWebVitals from './reportWebVitals';
 
 
@@ -23,6 +25,8 @@ ReactDOM.render(
       <Route exact path="/register" component={RegisterMember}/>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/announcement" component={CreateAnnouncement}/>
+      <Route exact path="/confirmation" component={Confirmation}/>
+      <Route exact path="/contactus" component={ContactUs}/>
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')

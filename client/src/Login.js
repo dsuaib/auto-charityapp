@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -56,21 +56,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function loginInfo(e) {
-  e.preventDefault();
-  let request = {
-    email: document.getElementById('username').value,
-    password: document.getElementById('password').value
-  }
-  axios.post('http://localhost:3000/login', request)
-  .then( resp => {
-    alert('Login Successful!')
-  })
-
-}
-
-export default function Login() {
+const Login = ({ handleClose }) => {
   const classes = useStyles();
+  // create state variables for each input
+  const [userName, setUserName] = useState('');
+  // retrieve password for authority to create annoucement
+  const [password, setPassword] = useState('');
+  
+  
+  
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const logInfo = {
+      userName,
+      password
+    }
+
+    axios.post('http://localhost:5000/app/login', logInfo)
+        .then(response => {
+            console.log(response.data)
+            alert('Announcement Created!')
+        })
+        
+  };
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -82,9 +92,9 @@ export default function Login() {
             <LockOutlinedIcon  />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Send Us An Email
           </Typography>
-          <form onSubmit={(e) => loginInfo(e)} className={classes.form} noValidate>
+          <form onSubmit={handleSubmit} className={classes.form}>
             <TextField
               variant="standard"
               margin="normal"
@@ -95,6 +105,8 @@ export default function Login() {
               name="Username"
               autoComplete="Username"
               autoFocus
+              value={userName}
+              onChange={e => setUserName(e.target.value)}
             />
             <TextField
               variant="standard"
@@ -106,6 +118,8 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
             />
 
             <Button
@@ -138,3 +152,4 @@ export default function Login() {
     </Grid>
   );
 }
+export default Login;

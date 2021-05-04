@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
+import  HomeIcon  from '@material-ui/icons/Home';
 
 
 import React, {Component, useState} from 'react';
@@ -151,21 +152,24 @@ const makeDonation = token => {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+      <AppBar position="static" color="primary" elevation={0} className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-         <Link className={classes.toolbarTitle} to = '/'>
-             <Typography variant="h6" color="inherit" noWrap >
+        <Link to='/' style={{  color: '#FFF'  }}> 
+                <HomeIcon style= {{marginRight:'10px'}}/> 
+              </Link>
+         <Link style={{ textDecoration: 'none', color: '#FFF' }} className={classes.toolbarTitle} to = '/'>
+             <Typography variant="h6"  noWrap >
             Home
             </Typography>
         </Link>
           <nav>
-            <Link variant="button" color="textPrimary"  className={classes.link}>
+            <Link variant="button" style={{ textDecoration: 'none', color: '#FFF' }}  className={classes.link}>
               About Us
             </Link>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link}>
+            <Link variant="button" style={{ textDecoration: 'none', color: '#FFF' }} href="#" className={classes.link}>
               Contact Us
             </Link>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link}>
+            <Link variant="button" style={{ textDecoration: 'none', color: '#FFF' }} href="#" className={classes.link}>
               Create Account
             </Link>
           </nav>
