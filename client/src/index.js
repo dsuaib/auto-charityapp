@@ -15,6 +15,7 @@ import ContactUs from './ContactUs'
 import EmployeeConfirmation from './EmployeeConfirmation'
 import RegisterEmployee from './RegisterEmployee'
 import reportWebVitals from './reportWebVitals';
+import DeleteAnnouncement from './DeleteAnnouncement';
 
 import { AuthProvider } from "./Auth";
 import PrivateRoute from "./APrivateRoute";
@@ -30,6 +31,7 @@ ReactDOM.render(
       <Route exact path="/donate" component={Donate}/>
       <Route exact path="/register" component={RegisterMember}/>
       <Route exact path="/login" component={Login}/>
+      <PrivateRoute exact path="/deleteannouncement" component={DeleteAnnouncement}/>
       <PrivateRoute exact path="/createannouncement" component={CreateAnnouncement}/>
       <PrivateRoute exact path="/employeeconfirmation" component={EmployeeConfirmation}/>
       <PrivateRoute exact path="/dashboard" component={Dashboard}/>

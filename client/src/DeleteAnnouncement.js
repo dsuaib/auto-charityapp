@@ -73,12 +73,10 @@ const footers = [
   },
 ];
 
-const CreateAnnouncement = ({ handleClose }) => {
+const DeleteAnnouncement = ({ handleClose }) => {
   const classes = useStyles();
   // create state variables for each input
-  const [fullName, setFullName] = useState('');
   const [title, setTitle] = useState('');
-  const [message, setMessage] = useState('');
 
   
   
@@ -88,15 +86,13 @@ const CreateAnnouncement = ({ handleClose }) => {
     e.preventDefault();
 
     const announcement = {
-      fullName,
       title,
-      message,
     }
 
-    axios.post('https://at715casestudy.herokuapp.com/app/createannouncement', announcement)
+    axios.delete('http://localhost:5000/app/deleteannouncement', { data: announcement })
         .then(response => {
             console.log(response.data)
-            alert('Announcement Created!')
+            console.log(title)
         })
         
   };
@@ -132,55 +128,25 @@ const CreateAnnouncement = ({ handleClose }) => {
              <Grid container spacing={2}>
                <Grid item xs={12}>
                  <TextField
-                   autoComplete="First Name"
-                   name="First Name"
-                   variant="filled"
-                   required
-                   fullWidth
-                   id="Full Name"
-                   label="Full Name"
-                   autoFocus
-                   value={fullName}
-                   onChange={e => setFullName(e.target.value)}
-                 />
-               </Grid>
-               <Grid item xs={12}>
-                 <TextField
                    required
                    fullWidth
                    label="Title"
-                   variant="filled"
-                   id="Title"
-                   name="Title"
-                   autoComplete="Title"
+                   id="title"
+                   name="title"
+                   autoComplete="title"
                    required
                    value={title}
                    onChange={e => setTitle(e.target.value)}
                  />
                </Grid>
                <Grid item xs={12}>
-                 <TextField
-                   label="Message"
-                   variant="filled"
-                   fullWidth
-                   multiline
-                   required
-                   value={message}
-                   onChange={e => setMessage(e.target.value)}
-                   variant="filled"
-                   required    
-                   id="message"
-                   label="Message"
-                   name="Message"
-                   autoComplete="Message"
-                 />
                 <Button size="large"
                 fullWidth
                type="submit"
                variant="contained"
-               color="primary"
+               color="secondary"
                className={classes.submit}>
-               Create Announcement
+               delete announcement
              </Button>
                </Grid>
                
@@ -226,4 +192,4 @@ const CreateAnnouncement = ({ handleClose }) => {
      );
 };
 
-export default CreateAnnouncement;
+export default DeleteAnnouncement;

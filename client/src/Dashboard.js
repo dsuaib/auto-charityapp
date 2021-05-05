@@ -123,7 +123,7 @@ export default function Dashboard() {
                 Update An Announcement
                 </Button>
                 </Link>
-              <Link to='/login' style={{ marginLeft:'20px', textDecoration: 'none', color: '#000'}}>
+              <Link to='/deleteannouncement' style={{ marginLeft:'20px', textDecoration: 'none', color: '#000'}}>
                 <Button variant="contained" size="large" color="secondary">
                   Delete An Announcement
                 </Button>

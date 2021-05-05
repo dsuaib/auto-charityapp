@@ -10,7 +10,7 @@ import StarIcon from '@material-ui/icons/StarBorder';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import  Container  from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import  HomeIcon  from '@material-ui/icons/Home';
 
@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(1),
+    marginLeft: '40px'
     
   },
   toolbar: {
@@ -64,77 +65,41 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'baseline',
     marginBottom: theme.spacing(2),
   },
+  cardtop: {
+    margin: theme.spacing(3),
+  },
+  cardbot: {
+    marginRight: theme.spacing(3),
+    marginLeft: theme.spacing(3),
+  },
+  footer: {
+    borderTop: `1px solid ${theme.palette.divider}`,
+    marginTop: theme.spacing(8),
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(3),
+    [theme.breakpoints.up('sm')]: {
+      paddingTop: theme.spacing(6),
+      paddingBottom: theme.spacing(6),
+    },
+  },
+
 
 }));
 
-const tiers = [
+const footers = [
   {
-    title: '',
-    price: '10',
-    description: [],
-    buttonText: 'Donate Now',
-    buttonVariant: 'contained',
+    title: 'Company',
+    description: ['Team', 'History', <Link to ='/contactus' style={{ textDecoration: 'none', color: 'inherit' }}>Contact us</Link>, 'Locations'],
   },
   {
-    title: '',
-    subheader: '',
-    price: '20',
-    description: [
-
-    ],
-    buttonText: 'Donate Now',
-    buttonVariant: 'contained',
+    title: 'Resources',
+    description: ['Vaccination Sites', 'Travel Restrictions', 'Mask Providers', 'COVID-19 Relief'],
   },
   {
-    title: '',
-    price: '50',
-    description: [
-      '',
-      '',
-      '',
-      '',
-    ],
-    buttonText: 'Donate Now',
-    buttonVariant: 'contained',
-  },
-  {
-    title: '',
-    price: '100',
-    description: [
-      '',
-      '',
-      '',
-      '',
-    ],
-    buttonText: 'Donate Now',
-    buttonVariant: 'contained',
-  },
-  {
-    title: '',
-    price: '200',
-    description: [
-      '',
-      '',
-      '',
-      '',
-    ],
-    buttonText: 'Donate Now',
-    buttonVariant: 'contained',
-  },
-  {
-    title: '',
-    price: '500',
-    description: [
-      '',
-      '',
-      '',
-      '',
-    ],
-    buttonText: 'Donate Now',
-    buttonVariant: 'contained',
+    title: 'Legal',
+    description: ['Privacy policy', 'Terms of use'],
   },
 ];
-
 
 export default function Pricing() {
   const classes = useStyles();
@@ -191,47 +156,167 @@ const makeDonation = token => {
       {/* End hero unit */}
       <Container maxWidth="md" component="main">
         <Grid container spacing={5} alignItems="flex-end">
-          {tiers.map((tier) => (
-            // Enterprise card is full width at sm breakpoint
-            <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
-              <Card>
+            <Grid alignItems="flex-end"  xs={12}  md={4}>
+            <Card className ={classes.cardtop} onMouseOver={() => setProduct({name: "$10", price: 10})}>
                 <CardHeader
-                  title={tier.title}
-                  subheader={tier.subheader}
-                  titleTypographyProps={{ align: 'center' }}
-                  subheaderTypographyProps={{ align: 'center' }}
-                  action={tier.title === 'Pro' ? <StarIcon /> : null}
                   className={classes.cardHeader}
                 />
                 <CardContent>
                   <div className={classes.cardPricing}>
                     <Typography component="h2" variant="h3" color="textPrimary">
-                      ${tier.price}
-                    </Typography>
-                    <Typography variant="h6" color="textSecondary">
-                      
+                      $10 
                     </Typography>
                   </div>
-                  <ul>
-                    {tier.description.map((line) => (
-                      <Typography component="li" variant="subtitle1" align="center" key={line}>
-                        {line}
-                      </Typography>
-                    ))}
-                  </ul>
                 </CardContent>
-                <CardActions>
-                <StripeCheckout stripeKey= {process.env.REACT_APP_KEY} token={makeDonation} name = "Donate Now" > 
-                  <Button className={classes.submit} size='large' variant={tier.buttonVariant} color="primary">
-                    {tier.buttonText}
+                <CardActions> 
+                <StripeCheckout stripeKey= {process.env.REACT_APP_KEY} token={makeDonation} name = "Donate $10" amount = {product.price * 100} > 
+                  <Button className={classes.submit}  variant="contained" color="primary">
+                    Click Here To Donate
                   </Button>
-                </StripeCheckout>  
+                </StripeCheckout> 
                 </CardActions>
               </Card>
             </Grid>
+            <Grid alignItems="flex-end"  xs={12}  md={4}>
+            <Card className ={classes.cardtop} onMouseOver={() => setProduct({name: "$20", price: 20})}>
+                <CardHeader
+                  className={classes.cardHeader}
+                />
+                <CardContent>
+                  <div className={classes.cardPricing}>
+                    <Typography component="h2" variant="h3" color="textPrimary">
+                      $20 
+                    </Typography>
+                  </div>
+                </CardContent>
+                <CardActions> 
+                <StripeCheckout stripeKey= {process.env.REACT_APP_KEY} token={makeDonation} name = "Donate $20" amount = {product.price * 100} > 
+                  <Button className={classes.submit} variant="contained" color="primary">
+                    Click Here To Donate
+                  </Button>
+                </StripeCheckout> 
+                </CardActions>
+              </Card>
+            </Grid>
+            <Grid  xs={12}  md={4}>
+            <Card className ={classes.cardtop} onMouseOver={() => setProduct({name: "$50", price: 50})}>
+                <CardHeader
+                  className={classes.cardHeader}
+                />
+                <CardContent>
+                  <div className={classes.cardPricing}>
+                    <Typography component="h2" variant="h3" color="textPrimary">
+                      $50 
+                    </Typography>
+                  </div>
+                </CardContent>
+                <CardActions> 
+                <StripeCheckout stripeKey= {process.env.REACT_APP_KEY} token={makeDonation} name = "Donate $50" amount = {product.price * 100} > 
+                  <Button className={classes.submit} variant="contained" color="primary">
+                    Click Here To Donate
+                  </Button>
+                </StripeCheckout> 
+                </CardActions>
+              </Card>
+            </Grid>
+            <Grid  xs={12}  md={4}>
+            <Card className ={classes.cardbot} onMouseOver={() => setProduct({name: "$100", price: 100})}>
+                <CardHeader
+                  className={classes.cardHeader}
+                />
+                <CardContent>
+                  <div className={classes.cardPricing}>
+                    <Typography component="h2" variant="h3" color="textPrimary">
+                      $100 
+                    </Typography>
+                  </div>
+                </CardContent>
+                <CardActions> 
+                <StripeCheckout stripeKey= {process.env.REACT_APP_KEY} token={makeDonation} name = "Donate $100" amount = {product.price * 100} > 
+                  <Button className={classes.submit} variant="contained" color="primary">
+                    Click Here To Donate
+                  </Button>
+                </StripeCheckout> 
+                </CardActions>
+              </Card>
+            </Grid>
+            <Grid  xs={12}  md={4}>
+            <Card className ={classes.cardbot}  onMouseOver={() => setProduct({name: "$200", price: 200})}>
+                <CardHeader
+                  className={classes.cardHeader}
+                />
+                <CardContent>
+                  <div className={classes.cardPricing}>
+                    <Typography component="h2" variant="h3" color="textPrimary">
+                      $200 
+                    </Typography>
+                  </div>
+                </CardContent>
+                <CardActions> 
+                <StripeCheckout stripeKey= {process.env.REACT_APP_KEY} token={makeDonation} name = "Donate $200" amount = {product.price * 100} > 
+                  <Button className={classes.submit}  variant="contained" color="primary">
+                    Click Here To Donate
+                  </Button>
+                </StripeCheckout> 
+                </CardActions>
+              </Card>
+            </Grid>
+            <Grid   xs={12}  md={4}>
+              <Card className ={classes.cardbot}  onMouseOver={() => setProduct({name: "$500", price: 500})}>
+                <CardHeader
+                  className={classes.cardHeader}
+                />
+                <CardContent>
+                  <div className={classes.cardPricing}>
+                    <Typography component="h2" variant="h3" color="textPrimary">
+                      $500 
+                    </Typography>
+                  </div>
+                </CardContent>
+                <CardActions> 
+                <StripeCheckout stripeKey= {process.env.REACT_APP_KEY} token={makeDonation} name = "Donate $500" amount = {product.price * 100} > 
+                  <Button className={classes.submit} variant="contained" color="primary">
+                    Click Here To Donate
+                  </Button>
+                </StripeCheckout> 
+                </CardActions>
+              </Card>
+            </Grid>
+           
+        </Grid>
+        
+      </Container>
+                  {/* Footer */}
+                  <Container maxWidth="md" component="footer" className={classes.footer}>
+        <Grid container spacing={4} justify="space-evenly">
+          {footers.map((footer) => (
+            <Grid item xs={6} sm={3} key={footer.title}>
+              <Typography variant="h6" color="textPrimary" gutterBottom>
+                {footer.title}
+              </Typography>
+              <ul>
+                {footer.description.map((item) => (
+                  <li key={item}>
+                    <Typography href="#" variant="subtitle1" color="textSecondary">
+                      {item}
+                    </Typography>
+                  </li>
+                ))}
+              </ul>
+            </Grid>
           ))}
         </Grid>
+        <Box mt={5}>
+        <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+        COVID-19 Charity App
+        {' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+        </Box>
       </Container>
-    </React.Fragment>
+      {/* End footer */}
+       </React.Fragment>
   );
 }

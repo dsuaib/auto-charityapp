@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container } from '@material-ui/core'; 
 import  HomeIcon  from '@material-ui/icons/Home';
@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import StarIcon from '@material-ui/icons/StarBorder';
 import CardHeader from '@material-ui/core/CardHeader';
 import Box from '@material-ui/core/Box';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -101,7 +102,15 @@ const footers = [
 
 function App() {
   const classes = useStyles();
+  const [announcements, setAnnouncements]=useState([]);
 
+  useEffect(() => {
+         axios.get('https://at715casestudy.herokuapp.com/app/announcements')
+         .then (res => {
+             console.log(res)
+             setAnnouncements(res.data)
+         })
+       }, []);
     return ( 
       <div>
         <>
@@ -155,41 +164,31 @@ function App() {
           </Container>
         </div>
         <div>
-        <Container className={classes.announcements} maxWidth="md" component="main">
-        <Grid container spacing={5} alignItems="flex-end">
-          {tiers.map((tier) => (
+        <Container className={classes.announcements}  component="main">
+        <Grid container spacing={2} >
+          {announcements.map((announcement) => (
             // Enterprise card is full width at sm breakpoint
-            <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
+            <Grid item key={announcement.title} xs={12}  md={4}>
               <Card>
                 <CardHeader
-                  title={tier.title}
-                  subheader={tier.subheader}
+                  title={announcement.title}
+                  fullName={announcement.fullName}
                   titleTypographyProps={{ align: 'center' }}
                   subheaderTypographyProps={{ align: 'center' }}
-                  action={tier.title === 'Pro' ? <StarIcon /> : null}
                   className={classes.cardHeader}
                 />
                 <CardContent>
                   <div className={classes.cardPricing}>
-                    <Typography component="h2" variant="h6" color="textPrimary">
-                      {tier.price}
+                    <Typography component="h6" variant="h6" color="textPrimary">
+                      {announcement.message}
                     </Typography>
                     <Typography variant="h6" color="textSecondary">
                       
                     </Typography>
                   </div>
-                  <ul>
-                    {tier.description.map((line) => (
-                      <Typography component="li" variant="subtitle1" align="center" key={line}>
-                        {line}
-                      </Typography>
-                    ))}
-                  </ul>
+ 
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant} color="primary">
-                    {tier.buttonText}
-                  </Button>
                 </CardActions>
               </Card>
             </Grid>
@@ -201,8 +200,8 @@ function App() {
         <Link to='/memberlayout'><button>See Members</button></Link>
         <Link to='/firebase'><button>fire</button></Link>
         
-     {/* Footer */}
-      <Container maxWidth="md" component="footer" className={classes.footer}>
+                   {/* Footer */}
+                   <Container maxWidth="md" component="footer" className={classes.footer}>
         <Grid container spacing={4} justify="space-evenly">
           {footers.map((footer) => (
             <Grid item xs={6} sm={3} key={footer.title}>
@@ -224,9 +223,8 @@ function App() {
         <Box mt={5}>
         <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Typography color="inherit" >
         COVID-19 Charity App
-        </Typography>{' '}
+        {' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
