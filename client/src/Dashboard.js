@@ -9,8 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import CardActions from '@material-ui/core/CardActions';
-import Fab from '@material-ui/core/Fab'
 import  HomeIcon  from '@material-ui/icons/Home';
 import app from "./base";
 
@@ -118,7 +116,7 @@ export default function Dashboard() {
                 Create An Announcement
                 </Button>
               </Link>
-              <Link to='/' style={{ textDecoration: 'none', color: '#000'}}>
+              <Link to='/updateannouncement' style={{ textDecoration: 'none', color: '#000'}}>
                 <Button variant="contained" size="large" color="primary">
                 Update An Announcement
                 </Button>

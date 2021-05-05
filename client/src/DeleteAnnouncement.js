@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {TextField, Button, Typography, AppBar, Avatar, Box, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container } from '@material-ui/core'; 
-import CreateIcon from '@material-ui/icons/Create';
 import  HomeIcon  from '@material-ui/icons/Home';
+import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 
 
 
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.secondary.main,
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -89,10 +89,10 @@ const DeleteAnnouncement = () => {
       title,
     }
 
-    axios.delete('https://aitcasestudyfrontend.herokuapp.com/app/removeannouncement', { data: announcement })
+    axios.delete('https://at715casestudy.herokuapp.com/app/removeannouncement', { data: announcement })
         .then(response => {
             console.log(response.data)
-            console.log(title)
+            alert('Announcement Deleted!')
         })
         
   };
@@ -109,8 +109,8 @@ const DeleteAnnouncement = () => {
             Home
             </Typography>
         </Link>
-        <Link to='/contactus' style={{ textDecoration: 'none', color: '#FFF' }}>  
-            <Typography>Send Feeback</Typography>
+        <Link to='/dashboard' style={{ textDecoration: 'none', color: '#FFF' }}>  
+            <Typography>Employee Dashboard</Typography>
           </Link>
         </Toolbar>
       </AppBar>
@@ -119,7 +119,7 @@ const DeleteAnnouncement = () => {
          <CssBaseline />
          <div className={classes.paper}>
            <Avatar className={classes.avatar}>
-             <CreateIcon />
+           <DeleteRoundedIcon/>
            </Avatar>
            <Typography component="h1" variant="h5">
             
@@ -130,7 +130,7 @@ const DeleteAnnouncement = () => {
                  <TextField
                    required
                    fullWidth
-                   label="Title"
+                   label="Enter the Title of the Announcement to Delete"
                    id="title"
                    name="title"
                    autoComplete="title"

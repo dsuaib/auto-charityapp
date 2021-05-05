@@ -6,7 +6,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import StarIcon from '@material-ui/icons/StarBorder';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,7 +14,7 @@ import Box from '@material-ui/core/Box';
 import  HomeIcon  from '@material-ui/icons/Home';
 
 
-import React, {Component, useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
@@ -40,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(1),
-    marginLeft: '40px'
+    marginLeft: '30px',
     
   },
   toolbar: {
@@ -147,7 +146,7 @@ const makeDonation = token => {
       {/* Hero unit */}
       <Container maxWidth="sm" component="main" className={classes.heroContent}>
         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-          Please select an amount
+          Please select a donation amount
         </Typography>
         <Typography variant="h5" align="center" color="textSecondary" component="p">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

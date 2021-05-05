@@ -10,7 +10,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link, withRouter, Redirect } from 'react-router-dom';
-import axios from 'axios';
 
 
 import app from "./base.js";
@@ -108,7 +107,7 @@ const Login = ({history}) => {
               required
               fullWidth
               id="email"
-              label="Email"
+              label="Email Address"
               name="email"
               autoComplete="email"
               autoFocus

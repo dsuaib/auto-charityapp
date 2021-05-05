@@ -9,8 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import CardActions from '@material-ui/core/CardActions';
-import Fab from '@material-ui/core/Fab'
 import app from "./base";
 import  HomeIcon  from '@material-ui/icons/Home';
 
@@ -87,20 +85,9 @@ export default function EmployeeConfirmation() {
             Home
             </Typography>
         </Link>
-          <nav>
-            <Link variant="button" style={{ textDecoration: 'none', color: '#FFF' }}  className={classes.link}>
-              About Us
-            </Link>
-            <Link variant="button" style={{ textDecoration: 'none', color: '#FFF' }} href="#" className={classes.link}>
-              Contact Us
-            </Link>
-            <Link variant="button" style={{ textDecoration: 'none', color: '#FFF' }} href="#" className={classes.link}>
-              Create Account
-            </Link>
-          </nav>
-          <Button href="#" color="primary" variant="outlined" className={classes.link}>
-            Login
-          </Button>
+        <Link to='/contactus' style={{ textDecoration: 'none', color: '#FFF' }}>  
+            <Typography>Send Feeback</Typography>
+          </Link>
         </Toolbar>
       </AppBar>
 
@@ -116,23 +103,23 @@ export default function EmployeeConfirmation() {
           <div>
             <Grid container justify="center">
               <Grid item>
-              <Link to='/' style={{  textDecoration: 'none', color: '#000'}}>
+              <Link to='/registeremployee' style={{  textDecoration: 'none', color: '#000'}}>
                 <Button variant="contained" size="large" color="primary">
                 Register Another Employee
                 </Button>
                 </Link>
-              <Link to='/pricing' style={{ textDecoration: 'none', color: '#000'}}>
+              <Link to='/createannouncement' style={{ textDecoration: 'none', color: '#000'}}>
                 <Button style={{ marginRight: '20px', marginLeft:'20px'}} 
                 variant="contained" size="large" color="primary">
                 Create An Announcement
                 </Button>
               </Link>
-              <Link to='/' style={{ textDecoration: 'none', color: '#000'}}>
+              <Link to='/updateannouncement' style={{ textDecoration: 'none', color: '#000'}}>
                 <Button variant="contained" size="large" color="primary">
                 Update An Announcement
                 </Button>
                 </Link>
-              <Link to='/login' style={{ marginLeft:'20px', textDecoration: 'none', color: '#000'}}>
+              <Link to='/deleteannouncement' style={{ marginLeft:'20px', textDecoration: 'none', color: '#000'}}>
                 <Button variant="contained" size="large" color="secondary">
                   Delete An Announcement
                 </Button>

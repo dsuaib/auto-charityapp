@@ -73,9 +73,10 @@ const footers = [
   },
 ];
 
-const CreateAnnouncement = () => {
+const UpdateAnnouncement = () => {
   const classes = useStyles();
   // create state variables for each input
+  const [oldTitle, setOldTitle] = useState('');
   const [fullName, setFullName] = useState('');
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState('');
@@ -88,12 +89,13 @@ const CreateAnnouncement = () => {
     e.preventDefault();
 
     const announcement = {
+      oldTitle,
       fullName,
       title,
       message,
     }
 
-    axios.post('https://at715casestudy.herokuapp.com/app/createannouncement', announcement)
+    axios.post('https://at715casestudy.herokuapp.com/app/updateannouncement', announcement )
         .then(response => {
             console.log(response.data)
             alert('Announcement Updated')
@@ -130,7 +132,21 @@ const CreateAnnouncement = () => {
            </Typography>
            <form className={classes.form} onSubmit={handleSubmit}>
              <Grid container spacing={2}>
-               <Grid item xs={12}>
+             <Grid item xs={12}>
+                <TextField
+                    autoComplete="Title of the Announcement You Would Like to Update"
+                 name="Current Announcement Title"
+                 variant="filled"
+                 required
+                 fullWidth
+                id="Current Announcement Title"
+                 label="Title of Announcement You Would Like to Update"
+                 autoFocus
+                 value={oldTitle}
+                onChange={e => setOldTitle(e.target.value)}
+                        />
+                </Grid>
+               <Grid item xs={12} sm={9}>
                  <TextField
                    autoComplete="First Name"
                    name="First Name"
@@ -144,7 +160,7 @@ const CreateAnnouncement = () => {
                    onChange={e => setFullName(e.target.value)}
                  />
                </Grid>
-               <Grid item xs={12}>
+               <Grid item xs={12} sm={9}>
                  <TextField
                    required
                    fullWidth
@@ -180,7 +196,7 @@ const CreateAnnouncement = () => {
                variant="contained"
                color="primary"
                className={classes.submit}>
-               Create Announcement
+               Update Announcement
              </Button>
                </Grid>
                
@@ -226,4 +242,5 @@ const CreateAnnouncement = () => {
      );
 };
 
-export default CreateAnnouncement;
+export default UpdateAnnouncement;
+

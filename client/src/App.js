@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { Button, Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container } from '@material-ui/core'; 
 import  HomeIcon  from '@material-ui/icons/Home';
 import { makeStyles } from '@material-ui/core/styles';
-import StarIcon from '@material-ui/icons/StarBorder';
 import CardHeader from '@material-ui/core/CardHeader';
+import MonetizationOnRoundedIcon from '@material-ui/icons/MonetizationOnRounded';
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
 
@@ -40,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'baseline',
     marginBottom: theme.spacing(2),
+  },
+  submit: {
+    fontSize: '20px',
   },
   footer: {
     borderTop: `1px solid ${theme.palette.divider}`,
@@ -155,7 +158,7 @@ function App() {
               <Grid container justify="center">
                 <Grid item>
                   <Link to='/pricing' style={{ textDecoration: 'none'}}> 
-                    <Button size='large' variant="contained" color="primary">Donate</Button>
+                    <Button className={classes.submit} endIcon={<MonetizationOnRoundedIcon/>} size='large' variant="contained" color="primary">Donate</Button>
                   </Link>
                 </Grid>
               </Grid>
@@ -196,10 +199,7 @@ function App() {
         </Grid>
       </Container>
         </div>
-        </>
-        <Link to='/memberlayout'><button>See Members</button></Link>
-        <Link to='/firebase'><button>fire</button></Link>
-        
+        </>        
                    {/* Footer */}
                    <Container maxWidth="md" component="footer" className={classes.footer}>
         <Grid container spacing={4} justify="space-evenly">

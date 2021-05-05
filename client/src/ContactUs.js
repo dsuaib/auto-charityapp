@@ -65,6 +65,7 @@ export default function ContactUs() {
         axios.post('https://at715casestudy.herokuapp.com/app/email', emailInfo)
         .then(response => console.log(response.data)).then(() => {
                 console.log(emailInfo)
+                alert('Email sent!')
             })
             .catch(err => {
                 console.log(err)
@@ -117,7 +118,7 @@ export default function ContactUs() {
                 variant="outlined"
                 required
                 fullWidth
-                label="Email"
+                label="Email Address"
                 variant="filled"
                 id="email"
                 name="email"
@@ -160,7 +161,9 @@ export default function ContactUs() {
             type="submit"
             variant="contained"
             color="primary"
+            endIcon={<SendRoundedIcon/>}
             className={classes.submit}>
+            
             Send Email
           </Button>
           
