@@ -23,10 +23,10 @@ function Donate() {
     }
 
     return (
-        <div>
+        <div onMouseOver={() => setProduct({name: "$20", price: 30})}>
             <StripeCheckout stripeKey= {process.env.REACT_APP_KEY} token={makeDonation} name = "Donate $10" amount = {product.price * 100}/>
             <StripeCheckout stripeKey= {process.env.REACT_APP_KEY} token={makeDonation} name = "Donate $20" amount = {20 *100} >
-                <button onClick={() => setProduct({name: "$20", price: 20*100})}>Test</button>
+                <button >Test</button>
             </StripeCheckout>  
 
         </div>

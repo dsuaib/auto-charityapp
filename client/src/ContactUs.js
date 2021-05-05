@@ -51,7 +51,6 @@ const useStyles = makeStyles((theme) => ({
 export default function ContactUs() {
     let history = useHistory();
     const [firstName, setFirstName] = useState('');
-    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const classes = useStyles();
@@ -60,7 +59,6 @@ export default function ContactUs() {
         e.preventDefault();
         const emailInfo = {
           firstName,  
-          username,
           email,
           message,
         }
@@ -83,7 +81,7 @@ export default function ContactUs() {
         },
         {
           title: 'Legal',
-          description: ['Privacy policy', 'Terms of use'],
+          description: ['Privacy policy', 'Terms of use', <Link to ='/dashboard' style={{ textDecoration: 'none', color: 'inherit' }}>Employee dashboard</Link>],
         },
       ];
 
@@ -96,7 +94,7 @@ export default function ContactUs() {
           <EmailRoundedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Let Us Know How We Are Doing!
+          Please Send Any Feedback Or Questions You May Have. Thank You!
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
@@ -112,19 +110,6 @@ export default function ContactUs() {
                 autoFocus
                 value={firstName}
                 onChange={e => setFirstName(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="filled"
-                required
-                fullWidth
-                name="Username"
-                label="Username"
-                id="Username"
-                autoComplete="Username"
-                value={username}
-                onChange={e => setUsername(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -176,7 +161,7 @@ export default function ContactUs() {
             variant="contained"
             color="primary"
             className={classes.submit}>
-            Send Email!
+            Send Email
           </Button>
           
         </form>
@@ -204,6 +189,13 @@ export default function ContactUs() {
           ))}
         </Grid>
         <Box mt={5}>
+        <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+        COVID-19 Charity App
+        {' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
         </Box>
       </Container>
       {/* End footer */}

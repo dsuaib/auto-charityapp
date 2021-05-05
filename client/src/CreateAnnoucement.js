@@ -2,39 +2,76 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import {TextField, Button, Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container } from '@material-ui/core'; 
+import {TextField, Button, Typography, AppBar, Avatar, Box, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container } from '@material-ui/core'; 
+import CreateIcon from '@material-ui/icons/Create';
 import  HomeIcon  from '@material-ui/icons/Home';
 
 
-const useStyles = makeStyles(theme => ({
-  root: {
+
+const useStyles = makeStyles((theme) => ({
+  '@global': {
+    ul: {
+      margin: 0,
+      padding: 0,
+      listStyle: 'none',
+    },
+  },
+  appBar: {
+    borderBottom: `1px solid ${theme.palette.divider}`,
+
+  },
+  toolbar: {
+    flexWrap: 'wrap',
+  },
+  toolbarTitle: {
+    flexGrow: 1,
+  },
+  paper: {
+    marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
     alignItems: 'center',
-    padding: theme.spacing(2),
-
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '300px',
-    },
-    '& .MuiButtonBase-root': {
-      margin: theme.spacing(2),
-    },
-    roor: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-      display: "flex",
-      marginRight: '10px',
-      justifyContent: "flex-end"
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.primary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+  typography: {
+    margin: theme.spacing(1, 1.5),
+  },
+  footer: {
+    borderTop: `1px solid ${theme.palette.divider}`,
+    marginTop: theme.spacing(8),
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(3),
+    [theme.breakpoints.up('sm')]: {
+      paddingTop: theme.spacing(6),
+      paddingBottom: theme.spacing(6),
     },
   },
 }));
+
+const footers = [
+  {
+    title: 'Company',
+    description: ['Team', 'History', <Link to ='/contactus' style={{ textDecoration: 'none', color: 'inherit' }}>Contact us</Link>, 'Locations'],
+  },
+  {
+    title: 'Resources',
+    description: ['Vaccination Sites', 'Travel Restrictions', 'Mask Providers', 'COVID-19 Relief'],
+  },
+  {
+    title: 'Legal',
+    description: ['Privacy policy', 'Terms of use', <Link to ='/dashboard' style={{ textDecoration: 'none', color: 'inherit' }}>Employee dashboard</Link>],
+  },
+];
 
 const CreateAnnouncement = ({ handleClose }) => {
   const classes = useStyles();
@@ -42,8 +79,7 @@ const CreateAnnouncement = ({ handleClose }) => {
   const [fullName, setFullName] = useState('');
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState('');
-  // retrieve password for authority to create annoucement
-  const [password, setPassword] = useState('');
+
   
   
   
@@ -55,7 +91,6 @@ const CreateAnnouncement = ({ handleClose }) => {
       fullName,
       title,
       message,
-      password
     }
 
     axios.post('https://at715casestudy.herokuapp.com/app/createannouncement', announcement)
@@ -67,62 +102,128 @@ const CreateAnnouncement = ({ handleClose }) => {
   };
 
   return (
-   <div> 
-    <div className={classes.roor}>
-          <CssBaseline/>
-          <AppBar position ="relative">
-            <Toolbar>
-              <Link to='/' style={{  color: '#FFF'  }}> 
-                <HomeIcon className={classes.menuButton}/> 
+    <div>
+      <AppBar position="static" color="primary" elevation={0} className={classes.appBar}>
+        <Toolbar className={classes.toolbar}>
+        <Link to='/' style={{  color: '#FFF'  }}> 
+                <HomeIcon style= {{marginRight:'10px'}}/> 
               </Link>
-              <Link to='/' style={{ textDecoration: 'none', color: '#FFF' }}>  
-                <Typography>
-                  Home
-                </Typography> 
-              </Link>          
-            </Toolbar>
-          </AppBar>
-        </div>
-    <form className={classes.root} onSubmit={handleSubmit}>
-      <TextField
-        label="Full Name"
-        variant="outlined"
-        required
-        value={fullName}
-        onChange={e => setFullName(e.target.value)}
-      />
-      <TextField
-        label="Title"
-        variant="outlined"
-        required
-        value={title}
-        onChange={e => setTitle(e.target.value)}
-      />
-
-       <TextField
-        label="Announcement"
-        variant="outlined"
-        multiline
-        required
-        value={message}
-        onChange={e => setMessage(e.target.value)}
-      />
-      <TextField
-        label="Password"
-        variant="outlined"
-        type="password"
-        required
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
-      <div>
-        <Button type="submit" variant="contained" color="primary">
-          Confirm Announcement
-        </Button>
-      </div>
-    </form>
-  </div>
-  );
+         <Link style={{ textDecoration: 'none', color: '#FFF' }} className={classes.toolbarTitle} to = '/'>
+             <Typography variant="h6"  noWrap >
+            Home
+            </Typography>
+        </Link>
+        <Link to='/contactus' style={{ textDecoration: 'none', color: '#FFF' }}>  
+            <Typography>Send Feeback</Typography>
+          </Link>
+        </Toolbar>
+      </AppBar>
+ 
+       <Container component="main" maxWidth="xs">
+         <CssBaseline />
+         <div className={classes.paper}>
+           <Avatar className={classes.avatar}>
+             <CreateIcon />
+           </Avatar>
+           <Typography component="h1" variant="h5">
+            
+           </Typography>
+           <form className={classes.form} onSubmit={handleSubmit}>
+             <Grid container spacing={2}>
+               <Grid item xs={12}>
+                 <TextField
+                   autoComplete="First Name"
+                   name="First Name"
+                   variant="filled"
+                   required
+                   fullWidth
+                   id="Full Name"
+                   label="Full Name"
+                   autoFocus
+                   value={fullName}
+                   onChange={e => setFullName(e.target.value)}
+                 />
+               </Grid>
+               <Grid item xs={12}>
+                 <TextField
+                   required
+                   fullWidth
+                   label="Email"
+                   variant="filled"
+                   id="Title"
+                   name="Title"
+                   autoComplete="Title"
+                   required
+                   value={title}
+                   onChange={e => setTitle(e.target.value)}
+                 />
+               </Grid>
+               <Grid item xs={12}>
+                 <TextField
+                   label="Message"
+                   variant="filled"
+                   fullWidth
+                   multiline
+                   required
+                   value={message}
+                   onChange={e => setMessage(e.target.value)}
+                   variant="filled"
+                   required    
+                   id="message"
+                   label="Message"
+                   name="Message"
+                   autoComplete="Message"
+                 />
+                <Button size="large"
+                fullWidth
+               type="submit"
+               variant="contained"
+               color="primary"
+               className={classes.submit}>
+               Create Announcement
+             </Button>
+               </Grid>
+               
+             </Grid>
+            
+             
+           </form>
+             
+         </div>
+       </Container>
+            {/* Footer */}
+            <Container maxWidth="md" component="footer" className={classes.footer}>
+           <Grid container spacing={4} justify="space-evenly">
+             {footers.map((footer) => (
+               <Grid item xs={6} sm={3} key={footer.title}>
+                 <Typography variant="h6" color="textPrimary" gutterBottom>
+                   {footer.title}
+                 </Typography>
+                 <ul>
+                   {footer.description.map((item) => (
+                     <li key={item}>
+                       <Typography href="#" variant="subtitle1" color="textSecondary">
+                         {item}
+                       </Typography>
+                     </li>
+                   ))}
+                 </ul>
+               </Grid>
+             ))}
+           </Grid>
+           <Box mt={5}>
+           <Typography variant="body2" color="textSecondary" align="center">
+         {'Copyright © '}
+           COVID-19 Charity App
+           {' '}
+         {new Date().getFullYear()}
+         {'.'}
+       </Typography>
+           </Box>
+         </Container>
+         {/* End footer */}
+   </div>
+     );
 };
 
 export default CreateAnnouncement;

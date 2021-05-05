@@ -7,8 +7,6 @@ import StarIcon from '@material-ui/icons/StarBorder';
 import CardHeader from '@material-ui/core/CardHeader';
 import Box from '@material-ui/core/Box';
 
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -22,11 +20,11 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '10px',
     justifyContent: "flex-end"
   },
-  body: {
-    marginTop: theme.spacing(3)
-  },
   createAccountButton: {
     marginRight: '50px',
+  },
+  body: {
+    marginTop: theme.spacing(3)
   },
   announcements: {
     marginTop: theme.spacing(3)
@@ -97,7 +95,7 @@ const footers = [
   },
   {
     title: 'Legal',
-    description: ['Privacy policy', 'Terms of use'],
+    description: ['Privacy policy', 'Terms of use', <Link to ='/dashboard' style={{ textDecoration: 'none', color: 'inherit' }}>Employee dashboard</Link>],
   },
 ];
 
@@ -107,6 +105,7 @@ function App() {
     return ( 
       <div>
         <>
+        
         <div className={classes.root}>
           <CssBaseline/>
           <AppBar mb={2} position ="relative">
@@ -120,11 +119,9 @@ function App() {
                 </Typography> 
               </Link>
               <div className={classes.title}>
-                <Link to='/register' style={{ textDecoration: 'none', color: '#FFF' }}>  
-                  <Typography className={classes.createAccountButton}>Create Account</Typography>
-                </Link>
+          
                 <Link to='/login' style={{ textDecoration: 'none', color: '#FFF' }}>  
-                  <Typography>Login</Typography>
+                  <Typography>Employee Login</Typography>
                 </Link>
 
               </div> 
@@ -202,6 +199,8 @@ function App() {
         </div>
         </>
         <Link to='/memberlayout'><button>See Members</button></Link>
+        <Link to='/firebase'><button>fire</button></Link>
+        
      {/* Footer */}
       <Container maxWidth="md" component="footer" className={classes.footer}>
         <Grid container spacing={4} justify="space-evenly">
@@ -223,6 +222,14 @@ function App() {
           ))}
         </Grid>
         <Box mt={5}>
+        <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Typography color="inherit" >
+        COVID-19 Charity App
+        </Typography>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
         </Box>
       </Container>
       {/* End footer */}

@@ -22,9 +22,12 @@ const useStyles = makeStyles(theme => ({
     },
     '& .MuiButtonBase-root': {
       margin: theme.spacing(2),
-    },
+    }},
     roor: {
       flexGrow: 1,
+    },
+    createAccountButton: {
+      marginRight: '50px',
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -35,7 +38,7 @@ const useStyles = makeStyles(theme => ({
       marginRight: '10px',
       justifyContent: "flex-end"
     },
-  },
+  
 }));
 
 const RegisterMember = ({ handleClose }) => {
@@ -73,18 +76,29 @@ const RegisterMember = ({ handleClose }) => {
 
   return (
    <div> 
-    <div className={classes.roor}>
+        <div className={classes.roor}>
           <CssBaseline/>
-          <AppBar position ="relative">
+          <AppBar mb={2} position ="relative">
             <Toolbar>
               <Link to='/' style={{  color: '#FFF'  }}> 
                 <HomeIcon className={classes.menuButton}/> 
               </Link>
               <Link to='/' style={{ textDecoration: 'none', color: '#FFF' }}>  
-                <Typography>
+                <Typography variant="h6"  noWrap>
                   Home
                 </Typography> 
-              </Link>          
+              </Link>
+              <div className={classes.title}>
+                <Link to='/register' style={{ textDecoration: 'none', color: '#FFF' }}>  
+                  <Typography className={classes.createAccountButton}>Create Account</Typography>
+                </Link>
+                <Link to='/login' style={{ textDecoration: 'none', color: '#FFF' }}>  
+                  <Typography>Login</Typography>
+                </Link>
+
+              </div> 
+
+          
             </Toolbar>
           </AppBar>
         </div>

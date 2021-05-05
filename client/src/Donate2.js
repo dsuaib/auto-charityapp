@@ -38,6 +38,10 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: `1px solid ${theme.palette.divider}`,
 
   },
+  submit: {
+    margin: theme.spacing(1),
+    
+  },
   toolbar: {
     flexWrap: 'wrap',
   },
@@ -69,7 +73,7 @@ const tiers = [
     price: '10',
     description: [],
     buttonText: 'Donate Now',
-    buttonVariant: 'outlined',
+    buttonVariant: 'contained',
   },
   {
     title: '',
@@ -91,7 +95,7 @@ const tiers = [
       '',
     ],
     buttonText: 'Donate Now',
-    buttonVariant: 'outlined',
+    buttonVariant: 'contained',
   },
   {
     title: '',
@@ -103,7 +107,7 @@ const tiers = [
       '',
     ],
     buttonText: 'Donate Now',
-    buttonVariant: 'outlined',
+    buttonVariant: 'contained',
   },
   {
     title: '',
@@ -115,7 +119,7 @@ const tiers = [
       '',
     ],
     buttonText: 'Donate Now',
-    buttonVariant: 'outlined',
+    buttonVariant: 'contained',
   },
   {
     title: '',
@@ -127,7 +131,7 @@ const tiers = [
       '',
     ],
     buttonText: 'Donate Now',
-    buttonVariant: 'outlined',
+    buttonVariant: 'contained',
   },
 ];
 
@@ -166,16 +170,13 @@ const makeDonation = token => {
             <Link variant="button" style={{ textDecoration: 'none', color: '#FFF' }}  className={classes.link}>
               About Us
             </Link>
-            <Link variant="button" style={{ textDecoration: 'none', color: '#FFF' }} href="#" className={classes.link}>
+            <Link to='/contactus' variant="button" style={{ textDecoration: 'none', color: '#FFF' }} className={classes.link}>
               Contact Us
             </Link>
             <Link variant="button" style={{ textDecoration: 'none', color: '#FFF' }} href="#" className={classes.link}>
-              Create Account
+              Resources
             </Link>
           </nav>
-          <Button href="#" color="primary" variant="outlined" className={classes.link}>
-            Login
-          </Button>
         </Toolbar>
       </AppBar>
       {/* Hero unit */}
@@ -221,7 +222,7 @@ const makeDonation = token => {
                 </CardContent>
                 <CardActions>
                 <StripeCheckout stripeKey= {process.env.REACT_APP_KEY} token={makeDonation} name = "Donate Now" > 
-                  <Button fullWidth variant={tier.buttonVariant} color="primary">
+                  <Button className={classes.submit} size='large' variant={tier.buttonVariant} color="primary">
                     {tier.buttonText}
                   </Button>
                 </StripeCheckout>  
