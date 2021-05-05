@@ -16,7 +16,6 @@ import EmployeeConfirmation from './EmployeeConfirmation'
 import RegisterEmployee from './RegisterEmployee'
 import reportWebVitals from './reportWebVitals';
 
-import SignUp from "./ASignUp";
 import { AuthProvider } from "./Auth";
 import PrivateRoute from "./APrivateRoute";
 
