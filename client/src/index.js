@@ -35,7 +35,6 @@ ReactDOM.render(
       <PrivateRoute exact path="/dashboard" component={Dashboard}/>
       <PrivateRoute exact path="/registeremployee" component={RegisterEmployee}/>
       <Route exact path="/contactus" component={ContactUs}/>
-          <Route exact path="/signup" component={SignUp} />
     </Switch>
   </Router>
   </AuthProvider>,
