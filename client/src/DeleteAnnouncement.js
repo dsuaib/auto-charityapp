@@ -89,7 +89,7 @@ const DeleteAnnouncement = () => {
       title,
     }
 
-    axios.delete('https://aitcasestudyfrontend.herokuapp.com/app/deleteannouncement', { data: announcement })
+    axios.delete('https://aitcasestudyfrontend.herokuapp.com/app/removeannouncement', { data: announcement })
         .then(response => {
             console.log(response.data)
             console.log(title)
