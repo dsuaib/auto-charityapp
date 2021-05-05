@@ -73,7 +73,7 @@ const footers = [
   },
 ];
 
-const DeleteAnnouncement = ({ handleClose }) => {
+const DeleteAnnouncement = () => {
   const classes = useStyles();
   // create state variables for each input
   const [title, setTitle] = useState('');
@@ -89,7 +89,7 @@ const DeleteAnnouncement = ({ handleClose }) => {
       title,
     }
 
-    axios.delete('http://localhost:5000/app/deleteannouncement', { data: announcement })
+    axios.delete('https://aitcasestudyfrontend.herokuapp.com/deleteannouncement', { data: announcement })
         .then(response => {
             console.log(response.data)
             console.log(title)
