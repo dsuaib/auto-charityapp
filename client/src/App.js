@@ -56,37 +56,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const tiers = [
-  {
-    title: 'Lorem ipsum dolor',
-    subheader: 'labore',
-    price: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    description: [],
-    buttonText: 'Update',
-    buttonVariant: 'contained',
-  },
-  {
-    title: ' laboris nisi ut',
-    subheader: 'minim',
-    price: 'Ullamco laboris nisi ut aliquip ex ea commodo eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam nisi ut aliquip ex ea commodo consequat quis nostrud exercitation ullamco laboris.',
-    description: [
-
-    ],
-    buttonText: 'Update',
-    buttonVariant: 'contained',
-  },
-  {
-    title: ' laboris nisi ut',
-    subheader: 'quis',
-    price: 'Veniam nisi ut aliquip ex ea commodo consequat quis nostrud ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris. Ncididunt ut labore et dolore magna aliqua.',
-    description: [
-
-    ],
-    buttonText: 'Update',
-    buttonVariant: 'contained',
-  },
-  
-];
 
 const footers = [
   {
@@ -152,7 +121,7 @@ function App() {
         <div>
           <Container maxWidth="sm">
             <Typography align="center" paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Our mission is to lorem ipsum dolor consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </Typography>
             <div>
               <Grid container justify="center">

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import {TextField, Button, Typography, AppBar, Avatar, Box, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container } from '@material-ui/core'; 
-import CreateIcon from '@material-ui/icons/Create';
+import {TextField, Button, Typography, AppBar, Avatar, Box, CssBaseline, Grid, Toolbar, Container } from '@material-ui/core'; 
 import  HomeIcon  from '@material-ui/icons/Home';
+import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 
 
 
@@ -98,7 +98,7 @@ const UpdateAnnouncement = () => {
     axios.post('https://at715casestudy.herokuapp.com/app/updateannouncement', announcement )
         .then(response => {
             console.log(response.data)
-            alert('Announcement Updated')
+            alert('Announcement Updated!')
         })
         
   };
@@ -125,7 +125,7 @@ const UpdateAnnouncement = () => {
          <CssBaseline />
          <div className={classes.paper}>
            <Avatar className={classes.avatar}>
-             <CreateIcon />
+             <DonutLargeIcon />
            </Avatar>
            <Typography component="h1" variant="h5">
             

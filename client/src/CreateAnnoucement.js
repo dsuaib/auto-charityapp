@@ -96,7 +96,7 @@ const CreateAnnouncement = () => {
     axios.post('https://at715casestudy.herokuapp.com/app/createannouncement', announcement)
         .then(response => {
             console.log(response.data)
-            alert('Announcement Updated')
+            alert('Announcement Created!')
         })
         
   };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import app from "./base.js";
 
+//Open source code inspiration from satansdeer
 export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {

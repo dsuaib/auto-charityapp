@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(1),
-    marginLeft: '30px',
+    marginLeft: '20px',
     
   },
   toolbar: {
@@ -149,7 +149,7 @@ const makeDonation = token => {
           Please select a donation amount
         </Typography>
         <Typography variant="h5" align="center" color="textSecondary" component="p">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Your donation helps families who have been severly impacted by the COVID-19 pandemic. $1 donate goes to consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </Typography>
       </Container>
       {/* End hero unit */}
