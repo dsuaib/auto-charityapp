@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import App from './App';
-import RegisterMember from "./RegisterMember"
 import Login from "./Login"
 import CreateAnnouncement from "./CreateAnnoucement"
 import Pricing from "./Donate2"
