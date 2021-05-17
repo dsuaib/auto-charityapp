@@ -12,3 +12,11 @@ const app = firebase.initializeApp({
   });
 
 export default app;
+
+// process.env.REACT_APP_APIKEY
+// process.env.REACT_APP_DOMAIN
+// process.env.REACT_APP_DATABASE
+// process.env.REACT_APP_PROJECTID
+// process.env.REACT_APP_STORAGE
+// process.env.REACT_APP_SENDER
+// process.env.REACT_APP_MEASUREMENT
