@@ -24,7 +24,6 @@ ReactDOM.render(
     <Switch>
       <Route exact path="/" component={App}/>
       <Route exact path="/pricing" component={Pricing}/>
-      <Route exact path="/register" component={RegisterMember}/>
       <Route exact path="/login" component={Login}/>
       <PrivateRoute exact path="/deleteannouncement" component={DeleteAnnouncement}/>
       <PrivateRoute exact path="/createannouncement" component={CreateAnnouncement}/>
